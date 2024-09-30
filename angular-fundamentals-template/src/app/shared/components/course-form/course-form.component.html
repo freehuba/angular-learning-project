@@ -67,7 +67,7 @@
       <div class="form__action">
         <button type="button" routerLink="/courses">HOME</button>
         <button type="button" (click)="onCancel()">CANCEL</button>
-        <button type="submit" [disabled]="courseForm.invalid">CREATE COURSE</button>
+        <button type="submit" [disabled]="!courseForm.valid" >CREATE COURSE</button>
       </div>
     </div>
   </div>
