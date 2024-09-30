@@ -44,5 +44,5 @@
   </div>
 </div>
 
-<app-success-dialog *ngIf="showDialog" (close)="closeDialog()"></app-success-dialog>
+<app-success-dialog *ngIf="showDialog" [message]="dialogMessage" (close)="closeDialog()"></app-success-dialog>
 

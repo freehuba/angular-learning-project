@@ -72,3 +72,5 @@
     </div>
   </div>
 </form>
+
+<app-success-dialog *ngIf="showDialog" [message]="dialogMessage" (close)="closeDialog()"></app-success-dialog>

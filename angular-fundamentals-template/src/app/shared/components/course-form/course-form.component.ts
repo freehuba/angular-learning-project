@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CoursesStateFacade } from '@app/store/courses/courses.facade';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -13,9 +14,12 @@ export class CourseFormComponent {
 
   courseForm!: FormGroup;
   submitted = false;
-
+  showDialog: boolean = false; 
+  dialogMessage: string = ''; 
+  
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private library: FaIconLibrary,
     private coursesFacade: CoursesStateFacade 
   ) {
@@ -58,6 +62,8 @@ export class CourseFormComponent {
     if (this.courseForm.valid) {
       console.log('Form Submitted!', this.courseForm.value);
       this.coursesFacade.createCourse(this.courseForm.value); 
+      this.dialogMessage = 'Course created successfully!'; 
+      this.showDialog = true;  
       // Reset form and handle UI feedback
       this.courseForm.reset();
       this.submitted = false;
@@ -72,5 +78,10 @@ export class CourseFormComponent {
   onCancel() {
     this.courseForm.reset();
     this.submitted = false;
+  }
+
+  closeDialog(): void {
+    this.showDialog = false; 
+    this.router.navigate(['/courses']); 
   }
 }

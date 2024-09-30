@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./success-dialog.component.scss']
 })
 export class SuccessDialogComponent {
+  @Input() message: string = '';
   @Output() close = new EventEmitter<void>();
 
   constructor(private router: Router) {}

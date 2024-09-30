@@ -15,6 +15,7 @@ export class CourseCardComponent {
   allCourseArray: Course[] = []; 
   isLoading: boolean = false; 
   showDialog: boolean = false; 
+  dialogMessage: string = ''; 
 
   constructor(private firebaseService: CoursesService, private router: Router, private authService: AuthService) {}
 
@@ -69,6 +70,7 @@ export class CourseCardComponent {
     console.log('Trash button clicked', courseId);
     this.firebaseService.deleteCourse(courseId).subscribe(() => {
       this.getAllCourses(); 
+      this.dialogMessage = 'Course deleted successfully!'; 
       this.showDialog = true;  
     });
   }
@@ -86,6 +88,5 @@ export class CourseCardComponent {
   closeDialog(): void {
     this.showDialog = false; 
     this.router.navigate(['/courses']); 
-
   }
 }
