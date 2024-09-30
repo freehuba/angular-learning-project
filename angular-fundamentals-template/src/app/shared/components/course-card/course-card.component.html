@@ -1,40 +1,45 @@
-<div>
-  <app-header>
-    <div class="user-actions">
-      <span class="username">Hemanth</span>
-      <button (click)="logout()">Logout</button>
+<div *ngIf="isLoading" class="loading-spinner">
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+
+<app-header>
+  <div class="user-actions">
+    <span class="username">Hemanth</span>
+    <button (click)="logout()">Logout</button>
+  </div>
+</app-header>
+<div class="course-cards">
+  <div class="course-card" *ngFor="let course of allCourseArray.reverse()">
+    <div class="course-card__description">
+      <div class="course-card__description-title">{{ course.title }}</div>
+      <div class="course-card__description-text">{{ course.description }}</div>
     </div>
-  </app-header>
-  
-  <div class="course-cards">
-    <div class="course-card" *ngFor="let course of allCourseArray.reverse()">
-      <div class="course-card__description">
-        <div class="course-card__description-title">{{ course.title }}</div>
-        <div class="course-card__description-text">{{ course.description }}</div>
-      </div>
-      <div class="course-card__info">
-        <div class="course-card__info-text">
-          <div>
-            <b>Authors: </b>
-            {{ course.authors.join(', ') }}
-          </div>
-          <div>
-            <b>Duration: </b>
-            <span class="course-card__duration">{{ course.duration | duration }}</span>
-          </div>
-          <div>
-            <b>Created: </b>
-            <span class="course-card__date">{{ course.creationDate | customDate }}</span>
-          </div>
+    <div class="course-card__info">
+      <div class="course-card__info-text">
+        <div>
+          <b>Authors: </b>
+          {{ course.authors.join(', ') }}
         </div>
-        <div class="course-card__info-actions">
-          <div class="button-container">
-            <app-button buttonText="Show Course" (buttonClick)="onShowCourseClick(course)"></app-button>
-            <app-button buttonText="" iconName="trash" (buttonClick)="onTrashClick(course.id)"></app-button>
-            <app-button buttonText="" iconName="edit" (buttonClick)="onEditClick(course)"></app-button>
-          </div>                
+        <div>
+          <b>Duration: </b>
+          <span class="course-card__duration">{{ course.duration | duration }}</span>
+        </div>
+        <div>
+          <b>Created: </b>
+          <span class="course-card__date">{{ course.creationDate | customDate }}</span>
         </div>
       </div>
+      <div class="course-card__info-actions">
+        <div class="button-container">
+          <app-button buttonText="Show Course" (buttonClick)="onShowCourseClick(course)"></app-button>
+          <app-button buttonText="" iconName="trash" (buttonClick)="onTrashClick(course.id)"></app-button>
+          <app-button buttonText="" iconName="edit" (buttonClick)="onEditClick(course)"></app-button>
+        </div>                
+      </div>
     </div>
-  </div>  
+  </div>
 </div>

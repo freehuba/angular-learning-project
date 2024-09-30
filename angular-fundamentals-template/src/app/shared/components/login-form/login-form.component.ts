@@ -53,7 +53,6 @@ export class LoginFormComponent implements OnInit {
       this.authService.login({ email, password }).subscribe(
         (username: string | undefined) => {
           this.loggedIn.emit(username);
-          alert(`Successfully Logged In, ${username}.`);
           this.router.navigate(['/courses']); 
           this.loginForm.reset();
         },

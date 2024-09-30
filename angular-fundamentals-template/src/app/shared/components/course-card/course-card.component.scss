@@ -59,3 +59,50 @@ button {
   border-radius: 4px;
 }
 
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; // Full height of the viewport
+  background-color: white; // White background
+  position: fixed; // Fixed positioning to center in viewport
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000; // Ensure it’s on top of other content
+}
+
+.dot {
+  width: 15px; // Size of the dots
+  height: 15px; // Size of the dots
+  margin: 0 5px; // Space between dots
+  border-radius: 50%; // Make them circular
+  background-color: #007bff; // Dot color (change as needed)
+  animation: dot-blink 1.2s infinite ease-in-out both; // Blink animation
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.1s; // Delay for the second dot
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.2s; // Delay for the third dot
+}
+
+.dot:nth-child(4) {
+  animation-delay: 0.3s; // Delay for the fourth dot
+}
+
+@keyframes dot-blink {
+  0%, 20%, 100% {
+    transform: scale(1); // Original size
+  }
+  10% {
+    transform: scale(1.5); // Scale up for the blink effect
+  }
+}

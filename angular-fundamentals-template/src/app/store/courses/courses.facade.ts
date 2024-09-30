@@ -27,7 +27,7 @@ export class CoursesStateFacade {
     this.store.dispatch(CoursesActions.requestAllCourses());
   }
 
-  getSingleCourse(id: number): void {
+  getSingleCourse(id: string): void {
     this.store.dispatch(CoursesActions.requestSingleCourse({ id: id.toString() }));
   }
 
@@ -35,7 +35,7 @@ export class CoursesStateFacade {
     this.store.dispatch(CoursesActions.requestFilteredCourses({ title: searchValue }));
   }
 
-  editCourse(body: any, id: number): void {
+  editCourse(body: any, id: string): void {
     this.store.dispatch(CoursesActions.requestEditCourse({ id: id.toString(), course: body }));
   }
 
@@ -43,7 +43,7 @@ export class CoursesStateFacade {
     this.store.dispatch(CoursesActions.requestCreateCourse({ course: body }));
   }
 
-  deleteCourse(id: number): void {
+  deleteCourse(id: string): void {
     this.store.dispatch(CoursesActions.requestDeleteCourse({ id: id.toString() }));
   }
 }

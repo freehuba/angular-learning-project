@@ -11,12 +11,11 @@ import { AuthService } from '@app/auth/services/auth.service';
   styleUrls: ['./course-card.component.scss']
 })
 export class CourseCardComponent {
-
   @Input() courses: Course[] = [];
-  allCourseArray: any[] = []; 
+  allCourseArray: Course[] = []; 
+  isLoading: boolean = false; 
 
-
-  constructor(private firebaseService: CoursesService,private router: Router,private authService: AuthService) {}
+  constructor(private firebaseService: CoursesService, private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
     this.getAllCourses();
@@ -29,6 +28,7 @@ export class CourseCardComponent {
   }
 
   getAllCourses() {
+    this.isLoading = true; // Set loading to true when fetching courses
     this.firebaseService.getAll().pipe(
       map((response: any) => {
         const coursesArray: Course[] = [];
@@ -41,12 +41,12 @@ export class CourseCardComponent {
       })
     ).subscribe(
       (data: Course[]) => {
-        console.log('Fetched courses:', data);
-        this.allCourseArray = data; // Assign fetched data to courseArray
-        this.updateCourseArrayWithFilteredCourses(this.courses); // Merge filtered courses
+        this.allCourseArray = data;
+        this.updateCourseArrayWithFilteredCourses(this.courses);
+        this.isLoading = false; // Set loading to false after fetching
       },
       error => {
-        console.error('Error fetching courses:', error);
+        this.isLoading = false; // Set loading to false on error
       }
     );
   }
@@ -59,20 +59,20 @@ export class CourseCardComponent {
     }
   }
 
-  onShowCourseClick(course : Course): void {
+  onShowCourseClick(course: Course): void {
     console.log('Show Course button clicked', course);
     // Add your logic here
   }
 
-  onTrashClick(courseId : string): void {
-    console.log('Trash button clicked',courseId);
+  onTrashClick(courseId: string): void {
+    console.log('Trash button clicked', courseId);
     this.firebaseService.deleteCourse(courseId).subscribe(() => {
       alert('The course has been deleted successfully!'); 
       this.getAllCourses(); 
     });
   }
 
-  onEditClick(course : Course): void {
+  onEditClick(course: Course): void {
     console.log('Edit button clicked', course);
     this.router.navigate(['/courses/add']);
   }
@@ -81,5 +81,4 @@ export class CourseCardComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-
 }
