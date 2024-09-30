@@ -10,6 +10,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./course-form.component.scss'],
 })
 export class CourseFormComponent {
+
   courseForm!: FormGroup;
   submitted = false;
 
@@ -56,16 +57,13 @@ export class CourseFormComponent {
     this.submitted = true;
     if (this.courseForm.valid) {
       console.log('Form Submitted!', this.courseForm.value);
-      // Use facade to add the course instead of directly calling the service
-      this.coursesFacade.createCourse(this.courseForm.value); // Dispatch action to add the course
-
+      this.coursesFacade.createCourse(this.courseForm.value); 
       // Reset form and handle UI feedback
       this.courseForm.reset();
       this.submitted = false;
       while (this.authors.length !== 0) {
         this.authors.removeAt(0);
       }
-      // alert('Course has been successfully created!');
     } else {
       alert('Please fill in all the required fields!');
     }
