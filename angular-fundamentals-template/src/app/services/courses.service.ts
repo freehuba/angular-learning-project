@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Course } from "./course.model";
 
 @Injectable({
   providedIn: "root",
@@ -13,6 +14,11 @@ export class CoursesService {
   // Function to add course data to Firebase
   addCourse(course: any): Observable<any> {
     return this.http.post(`${this.firebaseUrl}/courses.json`, course);
+  }
+
+  // Make sure this method returns an Observable<Course>
+  getSpecificCourse(id: string): Observable<Course> {
+    return this.http.get<Course>(`${this.firebaseUrl}/courses.json/${id}`);
   }
 
 

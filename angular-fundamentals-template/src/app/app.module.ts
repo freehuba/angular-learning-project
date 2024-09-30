@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoute } from './app-routing.module';
 import { WINDOW, windowProvider } from './auth/services/window.provider';
 import { AuthService } from './auth/services/auth.service';
+import { StoreModule } from '@ngrx/store';
+import { effects, reducers } from './store/courses';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent, CourseInfoComponent],
@@ -20,6 +23,8 @@ import { AuthService } from './auth/services/auth.service';
     SharedModule,
     FontAwesomeModule,
     HttpClientModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects),
     AppRoute
   ],
   providers: [AuthorizedGuard, NotAuthorizedGuard, CoursesService, CoursesStoreService,AuthService,
