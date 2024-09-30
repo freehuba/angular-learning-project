@@ -27,10 +27,6 @@ export class LoginFormComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  onRegister(): void {
-    this.router.navigate(['/registration']); 
-  }
-
   resetErrors(): void {
     this.emailError = null; 
     this.passwordError = null; 

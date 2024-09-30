@@ -28,9 +28,6 @@ export class RegistrationFormComponent implements OnInit {
     return this.registrationForm.controls;
   }
 
-  onLogin(): void {
-    this.router.navigate(['/login']); 
-  }
 
   onSubmit(): void {
     if (this.registrationForm.valid) {
