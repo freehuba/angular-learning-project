@@ -1,0 +1,62 @@
+@import 'src/app/shared/styles/styles';
+
+.course {
+ min-width: 60vw;
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    & input {
+      flex: 1;
+    }
+
+    & app-button {
+      margin-left: 16px;
+    }
+
+    & .course__duration {
+      margin-left: 16px;
+    }
+  }
+
+  &__authors {
+    margin-top: 8px;
+    display: flex;
+
+    &-item {
+      margin-right: 10px;
+    }
+  }
+
+  &__icon {
+    margin-left: 4px;
+    cursor: pointer;
+  }
+}
+
+.form__action{
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: none;
+  background-color: #007298;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 20px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background-color: #287dd8;
+  }
+}
+
+

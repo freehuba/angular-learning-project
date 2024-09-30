@@ -1,0 +1,45 @@
+<h2 class="text-align-center">Registration Page </h2>
+<div class="app-plate">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="registration-form">
+      <div>
+        <div class="form__control">
+          <label for="name">Name</label>
+          <input type="text" id="name" formControlName="name" placeholder="Input text"/>
+          <span *ngIf="f['name'].errors?.['required'] && f['name'].touched" class="text-danger">
+            Name is required.
+          </span>
+        </div>
+
+        <div class="form__control">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" appEmailValidator placeholder="Input text"/>
+          <span *ngIf="f['email'].errors?.['required'] && f['email'].touched" class="text-danger">
+            Email is required.
+          </span>
+          <span *ngIf="f['email'].errors?.['invalidEmail'] && f['email'].touched" class="text-danger">
+            Email is not valid.
+          </span>
+        </div>
+
+        <div class="form__control">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" placeholder="Input text"/>
+          <span *ngIf="f['password'].errors?.['required'] && f['password'].touched" class="text-danger">
+            Password is required.
+          </span>
+          <span *ngIf="f['password'].errors?.['minlength'] && f['password'].touched" class="text-danger">
+            Password must be at least 6 characters.
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <button type="submit"  class="form__action" [disabled]="!registrationForm.valid">Register</button>
+      </div>
+      <div class="login">
+        <p class="text">If you have an account, you may <button  class="login-prompt" type="button" (click)="onLogin()"><strong>Login</strong></button></p>
+      </div>
+    </div>
+  </form>
+</div>

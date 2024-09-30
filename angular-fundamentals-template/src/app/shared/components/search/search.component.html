@@ -1,0 +1,12 @@
+<div class="search-container">
+  <input 
+    type="text" 
+    [(ngModel)]="searchValue" 
+    [placeholder]="placeholder" 
+    (keyup.enter)="onSearch()" 
+    (input)="onInputChange()"
+  />
+  <!-- <button (click)="onSearch()">Search</button> -->
+  <app-button [buttonText]="'Search'" [iconName]="'search'" (buttonClick)="onSearch()">Search</app-button>
+
+</div>

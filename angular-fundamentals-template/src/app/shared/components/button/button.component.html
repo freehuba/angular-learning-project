@@ -1,0 +1,4 @@
+<button class="app-button" (click)="onClick()">
+  <fa-icon *ngIf="icon" [icon]="icon"></fa-icon>
+  <span *ngIf="buttonText">{{ buttonText }}</span>
+</button>

@@ -1,0 +1,31 @@
+.app-button {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: none;
+    background-color: #007298;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  
+    fa-icon {
+      margin-right: 8px;
+    }
+  
+    &:hover {
+      background-color: #287dd8;
+    }
+  
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px #2498bf;
+    }
+  
+    &:active {
+      background-color: #004085;
+    }
+  }
+
+  

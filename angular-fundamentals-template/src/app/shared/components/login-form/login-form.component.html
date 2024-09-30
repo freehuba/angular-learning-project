@@ -1,0 +1,25 @@
+<h2 class="text-align-center">Login Page</h2>
+<div class="app-plate">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="login-form">
+      <div>
+        <div class="form__control">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" placeholder="Input text" (blur)="resetEmailError()"/>
+          <span *ngIf="emailError" class="text-danger">{{ emailError }}</span>
+        </div>
+        <div class="form__control">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" placeholder="Input text" (blur)="resetPasswordError()"/>
+          <span *ngIf="passwordError" class="text-danger">{{ passwordError }}</span>
+        </div>        
+      <div>
+    </div>
+        <button type="submit"  class="form__action">Login</button>
+    </div>
+      <div class="login">
+        <p class="text">If you have an account, you may <button  class="login-prompt" type="button" (click)="onRegister()"><strong>Registration</strong></button></p>
+      </div>
+    </div>
+  </form>
+</div>

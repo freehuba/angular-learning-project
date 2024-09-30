@@ -1,0 +1,73 @@
+<h2>Create Course</h2>
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+  <div class="app-plate">
+    <div class="course">
+      <h3>Main Info</h3>
+      <div class="form__control">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          formControlName="title"
+          placeholder="Input text"
+        />
+        <span *ngIf="courseForm.get('title')?.invalid && (courseForm.get('title')?.touched || submitted)"
+              id="titleErrorMessage" class="text-danger">Title is required.</span>
+      </div>
+      <div class="form__control">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          placeholder="Input text"
+          rows="4"
+          cols="5"
+        ></textarea>
+        <span *ngIf="courseForm.get('description')?.invalid && (courseForm.get('description')?.touched || submitted)"
+              id="descriptionErrorMessage" class="text-danger">Description is required.</span>
+      </div>
+      <div class="separator"></div>
+      <h3>Duration</h3>
+      <div class="form__control">
+        <div class="course__flex">
+          <input
+            type="number"
+            id="duration"
+            formControlName="duration"
+            placeholder="Input duration"
+          />
+          <div class="course__duration">{{ courseForm.get('duration')?.value | duration}}</div>
+        </div>
+        <span *ngIf="courseForm.get('duration')?.invalid && (courseForm.get('duration')?.touched || submitted)"
+              id="durationErrorMessage" class="text-danger">Duration is required.</span>
+      </div>
+      <h3>Authors</h3>
+      <div class="form__control">
+        <div class="course__flex">
+          <input
+            type="text"
+            id="author"
+            placeholder="Input Author Name"
+            formControlName="newAuthor"
+          />
+          <button type="button" id="createAuthor" (click)="addAuthor()">CREATE AUTHOR</button>
+        </div>
+        <span *ngIf="courseForm.get('newAuthor')?.invalid && (courseForm.get('newAuthor')?.touched || submitted)"
+              id="authorErrorMessage" class="text-danger">New author should contain only latin letters and numbers.</span>
+        <div class="course__authors">
+          <ul>
+            <li *ngFor="let author of authors.controls; let i = index">
+              {{ author.value }}
+              <button type="button" (click)="deleteAuthor(i)">Delete</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="separator"></div>
+      <div class="form__action">
+        <button type="button" (click)="onCancel()">CANCEL</button>
+        <button type="submit" [disabled]="courseForm.invalid">CREATE COURSE</button>
+      </div>
+    </div>
+  </div>
+</form>

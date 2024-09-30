@@ -1,0 +1,41 @@
+@import 'src/app/shared/styles/styles';
+
+.registration-form {
+  width: 260px;
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form__action {
+  background: #007298;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 12px 16px;
+  cursor: pointer;
+  margin-top: 5%;
+
+  &:disabled {
+    background: #ccc; 
+    cursor: not-allowed; 
+  }
+}
+
+.login-prompt{
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  margin-left: -1%;
+}
+
+.text{
+  font-size: 14px;
+  margin-top: 5%;
+  margin-left: 2%;
+}
+
+.login{
+  margin-top: 10%;
+}
