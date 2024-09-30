@@ -1,0 +1,10 @@
+<div class="dialog-overlay" (click)="closeDialog()">
+    <div class="dialog-content" (click)="$event.stopPropagation()">
+      <div class="icon-container">
+        <span class="success-icon">✔️</span>
+      </div>
+      <h2>Course Deleted Successfully!</h2>
+      <button class="close-button" (click)="closeDialog()">Close</button>
+    </div>
+</div>
+  

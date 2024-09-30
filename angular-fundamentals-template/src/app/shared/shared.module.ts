@@ -17,6 +17,7 @@ import { DurationPipe } from './pipes/duration.pipe';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { EmailValidatorDirective } from '@shared/directives/email.directive';
 import { AppRoute } from '@app/app-routing.module';
+import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 
 const components = [
   HeaderComponent,
@@ -30,11 +31,12 @@ const components = [
   CourseFormComponent,
   DurationPipe,
   CustomDatePipe,
-  EmailValidatorDirective
+  EmailValidatorDirective,
+  SuccessDialogComponent
 ];
 
 @NgModule({
-  declarations: [components,EmailValidatorDirective],
+  declarations: [components],
   imports: [
     CommonModule,
     FontAwesomeModule,
