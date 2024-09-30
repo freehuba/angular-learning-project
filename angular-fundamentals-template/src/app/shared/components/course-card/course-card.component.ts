@@ -67,7 +67,7 @@ export class CourseCardComponent {
   onTrashClick(courseId: string): void {
     console.log('Trash button clicked', courseId);
     this.firebaseService.deleteCourse(courseId).subscribe(() => {
-      alert('The course has been deleted successfully!'); 
+      // alert('The course has been deleted successfully!'); 
       this.getAllCourses(); 
     });
   }

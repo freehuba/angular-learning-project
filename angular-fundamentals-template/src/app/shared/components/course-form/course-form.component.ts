@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { CoursesService } from '@app/services/courses.service';
+import { CoursesStateFacade } from '@app/store/courses/courses.facade';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,9 +12,12 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 export class CourseFormComponent {
   courseForm!: FormGroup;
   submitted = false;
-  
 
-  constructor(private fb: FormBuilder, private library: FaIconLibrary,private courseService: CoursesService) {
+  constructor(
+    private fb: FormBuilder,
+    private library: FaIconLibrary,
+    private coursesFacade: CoursesStateFacade // Use facade
+  ) {
     this.library.addIconPacks(fas);
     this.initializeForm();
   }
@@ -37,14 +40,13 @@ export class CourseFormComponent {
   addAuthor() {
     const newAuthorControl = this.courseForm.get('newAuthor');
     const newAuthorValue = newAuthorControl?.value;
-  
+
     if (newAuthorValue && typeof newAuthorValue === 'string' && newAuthorValue.trim()) {
       const authorControl = this.fb.control(newAuthorValue.trim(), [Validators.required]);
       this.authors.push(authorControl);
       newAuthorControl.reset();
     }
   }
-  
 
   deleteAuthor(index: number) {
     this.authors.removeAt(index);
@@ -54,20 +56,17 @@ export class CourseFormComponent {
     this.submitted = true;
     if (this.courseForm.valid) {
       console.log('Form Submitted!', this.courseForm.value);
-      // Handle form submission (e.g., send data to a server)
-      this.courseService.addCourse(this.courseForm.value).subscribe((response) => {
-        console.log('Course added successfully!', response);
-        this.courseForm.reset();
-        this.submitted = false;
-        while (this.authors.length !== 0) {
-          this.authors.removeAt(0);
-        }
-        alert('Course has been successfully created!');
-      }, (error) => {
-        alert('An error occurred while creating the course!');
-      });
-    }
-    else{
+      // Use facade to add the course instead of directly calling the service
+      this.coursesFacade.createCourse(this.courseForm.value); // Dispatch action to add the course
+
+      // Reset form and handle UI feedback
+      this.courseForm.reset();
+      this.submitted = false;
+      while (this.authors.length !== 0) {
+        this.authors.removeAt(0);
+      }
+      // alert('Course has been successfully created!');
+    } else {
       alert('Please fill in all the required fields!');
     }
   }
