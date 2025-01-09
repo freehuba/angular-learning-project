@@ -44,9 +44,9 @@ Open your browser and navigate to:
 📚 Learning Resources
 Here are some helpful resources to deepen your Angular knowledge:
 
-Angular Official Documentation
-Angular CLI Reference
-Tour of Heroes Tutorial
-RxJS Documentation
+   Angular Official Documentation
+   Angular CLI Reference
+   Tour of Heroes Tutorial
+   RxJS Documentation
 
 
