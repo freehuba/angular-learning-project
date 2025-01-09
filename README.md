@@ -28,8 +28,25 @@ Follow these steps to set up the project and start learning Angular:
 1. Clone this repository:
    git clone -b feature https://github.com/your-username/angular-learning-project.git
    cd angular-learning-project
+   
+Install dependencies:
+
    npm install
+   
+Start the development server:
+
    ng serve
+   
+Open your browser and navigate to:
+
    http://localhost:4200
+   
+📚 Learning Resources
+Here are some helpful resources to deepen your Angular knowledge:
+
+Angular Official Documentation
+Angular CLI Reference
+Tour of Heroes Tutorial
+RxJS Documentation
 
 
